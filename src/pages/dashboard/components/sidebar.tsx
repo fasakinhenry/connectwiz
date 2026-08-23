@@ -1,5 +1,5 @@
 import { Flame, Search, MessageCircle, Bell, Users2, CalendarDays, UserCircle2, LogOut, Rss } from 'lucide-react';
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { Logo } from '@/components/ui/logo';
 import { useAuth } from '@/hooks/use-auth';
 import { useConnectWizStore } from '@/services/mock';
@@ -17,9 +17,15 @@ const NAV = [
 
 export function Sidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { logout } = useAuth();
   const state = useConnectWizStore();
   const level = getLevel(state.gamification.xp);
+
+  async function handleLogout() {
+    await logout();
+    navigate('/login', { replace: true });
+  }
 
   return (
     <aside className="hidden w-64 shrink-0 flex-col border-r border-hairline px-4 py-6 lg:flex">
@@ -73,7 +79,7 @@ export function Sidebar() {
 
       <button
         type="button"
-        onClick={() => logout()}
+        onClick={handleLogout}
         className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-bold uppercase tracking-wide text-ink-soft transition-colors duration-200 hover:bg-cloud hover:text-error"
       >
         <LogOut size={19} />

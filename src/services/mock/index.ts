@@ -1,6 +1,6 @@
 export { SEED_PEOPLE, findPerson } from './seed-people';
 export { SEED_COMMUNITIES, SEED_EVENTS } from './seed-content';
-export { store } from './store';
+export { store, resolvePerson } from './store';
 export { useConnectWizStore } from './use-store';
 export { parseSearchIntent, searchPeople } from './search';
 export { getSharedAttributes, getConversationStarters } from './conversation-starters';

@@ -6,7 +6,7 @@ import { EmptyState } from '@/components/ui/empty-state';
 import { ConnectButton } from '@/components/connectwiz/connect-button';
 import { ProfileEditorForm } from '@/components/connectwiz/profile-editor-form';
 import {
-  findPerson,
+  resolvePerson,
   store,
   useConnectWizStore,
   getConversationStarters,
@@ -41,7 +41,7 @@ export default function ProfilePage() {
   const [editing, setEditing] = useState(false);
 
   const isSelf = !personId;
-  const profile: NetworkingProfile | null = isSelf ? state.profile : findPerson(personId!) ?? null;
+  const profile: NetworkingProfile | null = isSelf ? state.profile : resolvePerson(personId!);
 
   useEffect(() => {
     if (!isSelf && personId) store.recordProfileView(personId);

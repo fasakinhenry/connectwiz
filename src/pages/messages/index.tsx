@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, MessageCircle, Send } from 'lucide-react';
 import { EmptyState } from '@/components/ui/empty-state';
-import { findPerson, store, useConnectWizStore } from '@/services/mock';
+import { resolvePerson, store, useConnectWizStore } from '@/services/mock';
 
 function timeLabel(iso: string) {
   return new Date(iso).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
@@ -23,7 +23,7 @@ export default function MessagesPage() {
   });
 
   const active = personId ? state.conversations[personId] : null;
-  const activePerson = personId ? findPerson(personId) : null;
+  const activePerson = personId ? resolvePerson(personId) : null;
 
   useEffect(() => {
     if (personId) store.markConversationRead(personId);
@@ -57,7 +57,7 @@ export default function MessagesPage() {
               </p>
             )}
             {conversations.map((conv) => {
-              const person = findPerson(conv.personId);
+              const person = resolvePerson(conv.personId);
               if (!person) return null;
               const last = conv.messages[conv.messages.length - 1];
               return (

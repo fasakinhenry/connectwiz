@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { CalendarDays, MapPin } from 'lucide-react';
 import { Link } from 'react-router';
-import { SEED_EVENTS, findPerson, store, useConnectWizStore } from '@/services/mock';
+import { SEED_EVENTS, resolvePerson, store, useConnectWizStore } from '@/services/mock';
 
 export default function EventsPage() {
   const state = useConnectWizStore();
@@ -19,7 +19,7 @@ export default function EventsPage() {
         <div className="mt-6 flex flex-col gap-4">
           {SEED_EVENTS.map((event) => {
             const going = Boolean(state.eventRsvps[event.id]);
-            const attendees = event.attendeeIds.map(findPerson).filter(Boolean);
+            const attendees = event.attendeeIds.map(resolvePerson).filter(Boolean);
             return (
               <div key={event.id} className="rounded-lg border-2 border-hairline p-5">
                 <div className="flex flex-wrap items-start justify-between gap-3">

@@ -27,6 +27,10 @@ interface StoreState {
   activity: ActivityItem[];
   gamification: GamificationState;
   dailyCounts: Record<string, DailyCounts>;
+  /** People resolved from real backend search results, keyed by id — lets
+   *  profile/messages/activity pages resolve someone who isn't in the local
+   *  seed data (a real user found via the live API). */
+  personCache: Record<string, NetworkingProfile>;
 }
 
 const STORAGE_KEY = 'connectwiz_store_v1';
@@ -89,7 +93,12 @@ function defaultState(): StoreState {
     activity: SEED_ACTIVITY,
     gamification: { xp: 0, streak: 0, lastActiveDate: null },
     dailyCounts: {},
+    personCache: {},
   };
+}
+
+function resolvePersonName(id: string): string | undefined {
+  return findPerson(id)?.name ?? state.personCache[id]?.name;
 }
 
 function load(): StoreState {
@@ -194,17 +203,17 @@ export const store = {
 
   connectTo(personId: string) {
     if ((state.connections[personId] ?? 'none') !== 'none') return;
-    const person = findPerson(personId);
+    const personName = resolvePersonName(personId);
     state.connections = { ...state.connections, [personId]: 'pending-outgoing' };
     ensureDaily().connects += 1;
     addXp(10);
-    pushActivity({ kind: 'connection_request', text: `You sent a connection request to ${person?.name ?? 'someone'}.`, personId });
+    pushActivity({ kind: 'connection_request', text: `You sent a connection request to ${personName ?? 'someone'}.`, personId });
     emit();
 
     setTimeout(() => {
       state.connections = { ...state.connections, [personId]: 'connected' };
       addXp(20);
-      pushActivity({ kind: 'connection_accept', text: `${person?.name ?? 'They'} accepted your connection request!`, personId });
+      pushActivity({ kind: 'connection_accept', text: `${personName ?? 'They'} accepted your connection request!`, personId });
 
       const conv = state.conversations[personId] ?? { id: uid('conv'), personId, unread: 0, online: Math.random() > 0.4, messages: [] };
       const opener: ChatMessage = {
@@ -318,6 +327,17 @@ export const store = {
     return state.dailyCounts[todayKey()] ?? { connects: 0, messages: 0, profileViews: [] };
   },
 
+  cachePeople(people: NetworkingProfile[]) {
+    const additions: Record<string, NetworkingProfile> = {};
+    for (const p of people) additions[p.id] = p;
+    state.personCache = { ...state.personCache, ...additions };
+    emit();
+  },
+
+  getCachedPerson(id: string): NetworkingProfile | null {
+    return state.personCache[id] ?? null;
+  },
+
   getPostAuthPath(): string {
     return state.onboardingComplete ? '/dashboard' : '/onboarding';
   },
@@ -327,5 +347,12 @@ export const store = {
     emit();
   },
 };
+
+/** Looks up a person from seed data first, then the live-search cache — use
+ *  this instead of the raw seed `findPerson` anywhere a person could have
+ *  come back from a real backend search result. */
+export function resolvePerson(id: string): NetworkingProfile | null {
+  return findPerson(id) ?? state.personCache[id] ?? null;
+}
 
 export type { StoreState };

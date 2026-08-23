@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Heart, MessageCircle, Briefcase, CalendarDays } from 'lucide-react';
 import type { Post } from '@/lib/connectwiz-types';
-import { findPerson, store, useConnectWizStore } from '@/services/mock';
+import { resolvePerson, store, useConnectWizStore } from '@/services/mock';
 
 const KIND_ICON: Record<Post['kind'], typeof Briefcase | null> = {
   project: Briefcase,
@@ -30,7 +30,7 @@ export function PostCard({ post }: { post: Post }) {
   const [commentDraft, setCommentDraft] = useState('');
   const [showComments, setShowComments] = useState(false);
 
-  const author = post.authorId === 'me' ? null : findPerson(post.authorId);
+  const author = post.authorId === 'me' ? null : resolvePerson(post.authorId);
   const name = post.authorId === 'me' ? 'you' : (author?.name ?? 'someone');
   const avatarUrl = post.authorId === 'me' ? undefined : author?.avatarUrl;
   const headline = post.authorId === 'me' ? '' : (author?.headline ?? '');
@@ -82,7 +82,7 @@ export function PostCard({ post }: { post: Post }) {
       {showComments && (
         <div className="mt-4 flex flex-col gap-3 border-t border-hairline pt-4">
           {post.comments.map((c) => {
-            const commenter = c.authorId === 'me' ? null : findPerson(c.authorId);
+            const commenter = c.authorId === 'me' ? null : resolvePerson(c.authorId);
             const commenterName = c.authorId === 'me' ? 'you' : (commenter?.name ?? 'someone');
             return (
               <p key={c.id} className="text-xs leading-relaxed text-ink-soft">

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from '@/hooks/use-theme';
 import { AuthProvider } from '@/hooks/use-auth';
+import { ProtectedRoute } from '@/components/routing/protected-route';
 import LandingPage from '@/pages/landing';
 import LoginPage from '@/pages/auth/login';
 import SignupPage from '@/pages/auth/signup';
@@ -32,17 +33,17 @@ export default function App() {
               <Route
                 path="/onboarding"
                 element={
-                  // <ProtectedRoute>
+                  <ProtectedRoute>
                     <OnboardingPage />
-                  // </ProtectedRoute>
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="/dashboard"
                 element={
-                  // <ProtectedRoute>
+                  <ProtectedRoute>
                     <DashboardLayout />
-                  // </ProtectedRoute>
+                  </ProtectedRoute>
                 }
               >
                 <Route index element={<FeedPage />} />

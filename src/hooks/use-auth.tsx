@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { api, setAccessToken, ApiRequestError } from '@/lib/api-client';
 import type { AuthResponse, StreakMeUser } from '@/lib/types';
+import { store } from '@/services/mock';
 
 interface RegisterInput {
   name: string;
@@ -62,6 +63,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setAccessToken(null);
       setUser(null);
       setStatus('unauthenticated');
+      // Reset the local ConnectWiz profile/onboarding state too, so logging
+      // in as someone else (or demoing again) starts fresh at onboarding.
+      store.reset();
     }
   }
 

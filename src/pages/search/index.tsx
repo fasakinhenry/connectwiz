@@ -5,7 +5,8 @@ import { Search as SearchIcon, Sparkles, MessageCircleWarning } from 'lucide-rea
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { PersonCard } from '@/components/connectwiz/person-card';
-import { parseSearchIntent, searchPeople, useConnectWizStore } from '@/services/mock';
+import { parseSearchIntent, searchPeople, store, useConnectWizStore } from '@/services/mock';
+import { connectwizApi } from '@/lib/connectwiz-api';
 import type { SearchIntent, SearchResultPerson } from '@/lib/connectwiz-types';
 
 const EXAMPLES = [
@@ -22,7 +23,7 @@ export default function SearchPage() {
   const [intent, setIntent] = useState<SearchIntent | null>(null);
   const [results, setResults] = useState<SearchResultPerson[] | null>(null);
 
-  function runSearch(q: string) {
+  async function runSearch(q: string) {
     const trimmed = q.trim();
     if (!trimmed) return;
     setQuery(trimmed);
@@ -30,14 +31,25 @@ export default function SearchPage() {
     setResults(null);
     setIntent(null);
 
-    setTimeout(() => {
+    try {
+      const { intent: apiIntent, results: apiResults } = await connectwizApi.search(trimmed);
+      setIntent(apiIntent);
+      if (apiIntent.supported) {
+        store.cachePeople(apiResults.map((r) => r.profile));
+        setResults(apiResults);
+      }
+    } catch {
+      // Backend unreachable (or not authenticated against it) — fall back to
+      // the local mock search so the demo keeps working regardless.
+      await new Promise((resolve) => setTimeout(resolve, 500));
       const parsedIntent = parseSearchIntent(trimmed);
       setIntent(parsedIntent);
       if (parsedIntent.supported) {
         setResults(searchPeople(parsedIntent, state.profile));
       }
+    } finally {
       setLoading(false);
-    }, 700);
+    }
   }
 
   const filterChips = intent

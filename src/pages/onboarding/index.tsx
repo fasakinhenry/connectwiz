@@ -12,6 +12,7 @@ import { LocationStep } from './components/location-step';
 import { ONBOARDING_STEPS, getVagueFollowUp, buildProfileFromAnswers, store } from '@/services/mock';
 import type { OnboardingAnswers } from '@/services/mock';
 import type { NetworkingProfile } from '@/lib/connectwiz-types';
+import { connectwizApi } from '@/lib/connectwiz-api';
 
 interface Msg {
   id: string;
@@ -149,7 +150,12 @@ export default function OnboardingPage() {
     const finalProfile: NetworkingProfile = coords
       ? { ...generatedProfile, location: { ...generatedProfile.location, lat: coords.lat, lng: coords.lng } }
       : generatedProfile;
+
     store.completeOnboarding(finalProfile);
+    // Best-effort sync to the real backend — the demo must keep working off
+    // the local store even if the API/DB is unavailable.
+    connectwizApi.completeOnboarding(finalProfile).catch(() => {});
+
     navigate('/dashboard/search', { replace: true });
   }
 
