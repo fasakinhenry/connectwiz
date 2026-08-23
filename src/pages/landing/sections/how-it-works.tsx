@@ -4,23 +4,23 @@ import { Eyebrow } from '@/components/ui/eyebrow';
 const STEPS = [
   {
     n: '01',
-    title: 'pick what you\'re building',
-    body: 'a workout streak, a writing habit, a coding challenge, a sobriety milestone, anything you want to show up for.',
+    title: 'talk, don\'t fill out forms',
+    body: 'a quick AI conversation learns your skills, interests, and goals — then builds a rich profile you can review and edit.',
   },
   {
     n: '02',
-    title: 'post your progress daily',
-    body: 'a quick photo, a note, or a number. it takes ten seconds and it\'s the whole game.',
+    title: 'describe who you want to meet',
+    body: 'type it in plain language: "female developers around me who are into AI." connectwiz interprets the intent for you.',
   },
   {
     n: '03',
-    title: 'find your people',
-    body: 'ai matches you into circles of people on the same journey, so you\'re never doing it alone.',
+    title: 'see the why, not just the who',
+    body: 'every match shows a match score and the real reasons you\'re a fit — shared skills, interests, goals, or location.',
   },
   {
     n: '04',
-    title: 'let the streak carry you',
-    body: 'your heatmap fills in, your circle cheers you on, and skipping a day starts to feel unthinkable.',
+    title: 'connect, then actually talk',
+    body: 'send a request, get a conversation starter based on what you have in common, and take it from strangers to a real relationship.',
   },
 ];
 
@@ -31,7 +31,7 @@ export function HowItWorks() {
         <div className="mx-auto max-w-2xl text-center">
           <Eyebrow>the loop</Eyebrow>
           <h2 className="mt-5 text-balance text-4xl font-bold tracking-tight text-ink md:text-5xl">
-            four steps. no gimmicks.
+            four steps. no cold-DM anxiety.
           </h2>
         </div>
 

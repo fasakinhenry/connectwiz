@@ -27,7 +27,7 @@ export default function SignupPage() {
     setLoading(true);
     try {
       await register({ name, email, password, avatarUrl });
-      navigate('/dashboard', { replace: true });
+      navigate('/onboarding', { replace: true });
     } catch (err: any) {
       setError(err instanceof ApiRequestError ? err.message : 'something went wrong. try again.');
     } finally {
@@ -37,7 +37,7 @@ export default function SignupPage() {
 
   return (
     <AuthShell
-      title="create your streak"
+      title="create your account"
       switchLabel="already have an account?"
       switchTo="/login"
       switchCta="log in"

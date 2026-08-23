@@ -1,24 +1,24 @@
 export const SITE = {
-  name: 'streakme',
-  title: 'streakme — build consistency together',
+  name: 'connectwiz',
+  title: 'connectwiz — meet the right people, not just more people',
   description:
-    'streakme is the social streak platform for anything you want to stay consistent at. track your streak, post your progress daily, and grow with people on the same journey.',
-  url: 'https://streakme.app',
+    'connectwiz is an AI-powered networking copilot. describe who you want to meet in plain language, get matched with real reasons why, and turn strangers into your next collaborator, mentor, or friend.',
+  url: 'https://connectwiz.app',
   ogImage: '/og-image.svg',
-  twitterHandle: '@streakme',
+  twitterHandle: '@connectwiz',
   themeColor: '#287bff',
 };
 
 export const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'streakme',
+  name: 'connectwiz',
   url: SITE.url,
   logo: `${SITE.url}/favicon.svg`,
   sameAs: [
-    'https://x.com/streakme',
-    'https://instagram.com/streakme',
-    'https://github.com/streakme',
+    'https://x.com/connectwiz',
+    'https://instagram.com/connectwiz',
+    'https://github.com/connectwiz',
   ],
 };
 
@@ -37,8 +37,8 @@ export const siteNavigationJsonLd = {
 export const softwareAppJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'streakme',
-  applicationCategory: 'LifestyleApplication',
+  name: 'connectwiz',
+  applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web, iOS, Android',
   offers: {
     '@type': 'Offer',
@@ -48,6 +48,6 @@ export const softwareAppJsonLd = {
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '4.9',
-    ratingCount: '2140',
+    ratingCount: '1280',
   },
 };

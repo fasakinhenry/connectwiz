@@ -4,19 +4,19 @@ import { Eyebrow } from '@/components/ui/eyebrow';
 const TESTIMONIALS = [
   {
     quote:
-      'I\'ve tried every habit app there is. none of them stuck until I had a circle of people who\'d actually notice if I disappeared for a day.',
+      'I always knew networking mattered, I just never knew who to actually talk to. connectwiz found me two collaborators in the same week I signed up.',
     name: 'temi a.',
-    role: '214-day strength streak',
+    role: 'indie hacker',
   },
   {
     quote:
-      'streakme turned "I should code more" into a 90-day habit I genuinely look forward to. the heatmap is oddly addictive.',
+      'the "why you should connect" line is the whole product for me. it turns a cold DM into an actual reason to talk.',
     name: 'daniel o.',
-    role: '90-day #100DaysOfCode',
+    role: 'frontend developer',
   },
   {
     quote:
-      'our whole cohort runs their build-in-public streaks here now. it\'s the accountability layer discord could never be.',
+      'our accelerator cohort uses this to find mentors now. the search is scary good at understanding what we actually mean.',
     name: 'chiamaka n.',
     role: 'founder, cohortly',
   },
@@ -27,9 +27,9 @@ export function Testimonials() {
     <section id="stories" className="py-(--spacing-section-sm) md:py-(--spacing-section-md)">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow>from the community</Eyebrow>
+          <Eyebrow>from early users</Eyebrow>
           <h2 className="mt-5 text-balance text-4xl font-bold tracking-tight text-(--color-ink) md:text-5xl">
-            streaks people are actually proud of
+            connections people are actually glad they made
           </h2>
         </div>
 

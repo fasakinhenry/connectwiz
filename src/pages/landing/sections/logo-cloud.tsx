@@ -1,11 +1,11 @@
-const LOGOS = ['buildspace', 'foundersdesk', 'gymlog', 'cohortly', 'shipfast', 'orbitclub'];
+const LOGOS = ['buildspace', 'foundersdesk', 'cohortly', 'shipfast', 'orbitclub', 'loopwork'];
 
 export function LogoCloud() {
   return (
     <section className="border-y border-hairline bg-cloud py-8">
       <div className="container-page">
         <p className="text-center text-xs font-bold uppercase tracking-wider text-ink-soft">
-          the communities keeping their streaks alive on streakme
+          trusted by builders and communities growing their network on connectwiz
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
           {LOGOS.map((name) => (

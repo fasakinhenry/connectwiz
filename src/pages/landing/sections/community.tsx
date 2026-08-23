@@ -1,18 +1,36 @@
 import { motion } from 'framer-motion';
-import { Flame, Heart, MessageCircle } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { Eyebrow } from '@/components/ui/eyebrow';
 
-const POSTS = [
-  { name: 'amara', streak: 214, habit: 'strength training', hue: '#287bff' },
-  { name: 'kunle', streak: 62, habit: 'daily leetcode', hue: '#ff8a3d' },
-  { name: 'jordan', streak: 349, habit: '5am mile', hue: '#22c55e' },
+const RESULTS = [
+  {
+    name: 'zainab bello',
+    role: 'ML engineer · healthcare AI',
+    match: 91,
+    reasons: ['both interested in AI', 'shares your Machine Learning skill'],
+    hue: '#287bff',
+  },
+  {
+    name: 'grace okon',
+    role: 'full-stack developer · lagos',
+    match: 88,
+    reasons: ['located near you', 'into generative AI'],
+    hue: '#ff8a3d',
+  },
+  {
+    name: 'priya sharma',
+    role: 'robotics student',
+    match: 76,
+    reasons: ['also looking for mentors', 'into AI + hardware'],
+    hue: '#22c55e',
+  },
 ];
 
 const STATS = [
-  { value: '1.2M+', label: 'streaks tracked' },
-  { value: '340K', label: 'daily check-ins' },
-  { value: '18K', label: 'active circles' },
-  { value: '92%', label: '30-day retention' },
+  { value: '12+', label: 'searchable signals per profile' },
+  { value: '1 call', label: 'per search, not per scroll' },
+  { value: '3', label: 'reasons shown per match' },
+  { value: '0', label: 'awkward cold opens' },
 ];
 
 export function Community() {
@@ -20,13 +38,16 @@ export function Community() {
     <section id="community" className="py-(--spacing-section-sm) md:py-(--spacing-section-md)">
       <div className="container-page grid items-center gap-9 lg:grid-cols-2">
         <div>
-          <Eyebrow>the community</Eyebrow>
+          <Eyebrow>
+            <Sparkles size={14} className="text-link" />
+            the wow feature
+          </Eyebrow>
           <h2 className="mt-5 text-balance text-4xl font-bold tracking-tight text-ink md:text-5xl">
-            your feed, but everyone's actually consistent
+            search for people the way you'd describe them to a friend
           </h2>
           <p className="mt-4 max-w-md text-lg leading-relaxed text-ink-soft">
-            no highlight reels. just daily proof of real people, real reps, real days logged.
-            react, reply, and keep each other honest.
+            type "female developers around me who are into AI" and connectwiz turns that into
+            structured filters, then explains every match instead of dumping a list on you.
           </p>
 
           <div className="mt-10 grid grid-cols-2 gap-6">
@@ -46,9 +67,9 @@ export function Community() {
         </div>
 
         <div className="flex flex-col gap-4">
-          {POSTS.map((post, i) => (
+          {RESULTS.map((person, i) => (
             <motion.div
-              key={post.name}
+              key={person.name}
               initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
@@ -59,28 +80,25 @@ export function Community() {
                 <div className="flex items-center gap-3">
                   <span
                     className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white"
-                    style={{ background: post.hue }}
+                    style={{ background: person.hue }}
                   >
-                    {post.name[0].toUpperCase()}
+                    {person.name[0].toUpperCase()}
                   </span>
                   <div>
-                    <p className="text-sm font-bold text-ink">{post.name}</p>
-                    <p className="text-xs font-semibold text-ink-soft">{post.habit}</p>
+                    <p className="text-sm font-bold text-ink">{person.name}</p>
+                    <p className="text-xs font-semibold text-ink-soft">{person.role}</p>
                   </div>
                 </div>
                 <span className="flex items-center gap-1 rounded-pill bg-cloud px-3 py-1 text-xs font-bold text-link">
-                  <Flame size={12} fill="var(--color-flame)" className="text-flame" />
-                  {post.streak}
+                  {person.match}% match
                 </span>
               </div>
-              <div className="mt-4 h-28 w-full rounded-md bg-cloud" />
-              <div className="mt-4 flex items-center gap-5 text-ink-soft">
-                <span className="flex items-center gap-1.5 text-xs font-semibold">
-                  <Heart size={14} /> 48
-                </span>
-                <span className="flex items-center gap-1.5 text-xs font-semibold">
-                  <MessageCircle size={14} /> 12
-                </span>
+              <div className="mt-4 flex flex-col gap-1.5">
+                {person.reasons.map((reason) => (
+                  <p key={reason} className="text-xs font-semibold text-ink-soft">
+                    · {reason}
+                  </p>
+                ))}
               </div>
             </motion.div>
           ))}

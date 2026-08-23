@@ -56,7 +56,7 @@ export function Navbar() {
             log in
           </Link>
           <Link to="/signup" className={buttonVariants({ variant: 'primary', size: 'sm' })}>
-            start a streak
+            get started
           </Link>
         </div>
 
@@ -107,7 +107,7 @@ export function Navbar() {
                   onClick={() => setOpen(false)}
                   className={buttonVariants({ variant: 'primary', className: 'w-full' }) + " py-2.5!"}
                 >
-                  start a streak
+                  get started
                 </Link>
               </li>
             </ul>

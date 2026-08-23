@@ -10,11 +10,9 @@ interface LogoProps {
 }
 
 /**
- * The streakme mark: a flame built from an ascending staircase of bars —
- * reading simultaneously as fire (momentum, heat, "don't break the streak")
- * and as an upward contribution graph (the GitHub-heatmap DNA of the product).
- * This is the single source of truth for the mark — every surface (navbar,
- * footer, CTA, favicon) renders this exact same SVG so the brand never drifts.
+ * The ConnectWiz mark: three nodes joined by lines — a small network graph
+ * that reads as "people, connected." Every surface (navbar, footer, CTA,
+ * favicon) renders this exact same SVG so the brand never drifts.
  */
 export function Logo({ className, withWordmark = true, tone = 'auto', size = 32 }: LogoProps) {
   return (
@@ -27,13 +25,23 @@ export function Logo({ className, withWordmark = true, tone = 'auto', size = 32 
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
-        <rect x="6" y="30" width="7" height="12" rx="2.5" fill="var(--color-flame)" />
-        <rect x="15" y="22" width="7" height="20" rx="2.5" fill="var(--color-flame)" />
-        <rect x="24" y="13" width="7" height="29" rx="2.5" fill="var(--color-flame-deep)" />
         <path
-          d="M35.5 8c1.8 3.4-.4 5.6-1.9 7.4-1.6 1.9-2.7 3.7-1.3 6.4 1 1.9 3 2.9 5 2.6 3-.5 5.2-3.4 4.9-6.9-.4-4.6-3.9-8-6.7-9.5Z"
-          fill="var(--color-primary)"
+          d="M14 30 L24 14 L36 20"
+          stroke="var(--color-primary)"
+          strokeWidth="3.5"
+          strokeLinecap="round"
         />
+        <path
+          d="M14 30 L36 34"
+          stroke="var(--color-primary)"
+          strokeWidth="3.5"
+          strokeLinecap="round"
+          opacity="0.55"
+        />
+        <circle cx="24" cy="14" r="6" fill="var(--color-primary-deep)" />
+        <circle cx="36" cy="20" r="6" fill="var(--color-primary)" />
+        <circle cx="14" cy="30" r="6" fill="var(--color-primary)" />
+        <circle cx="36" cy="34" r="6" fill="var(--color-flame)" />
       </svg>
       {withWordmark && (
         <span
@@ -42,7 +50,7 @@ export function Logo({ className, withWordmark = true, tone = 'auto', size = 32 
             tone === 'inverse' ? 'text-(--color-on-surface-inverse)' : 'text-(--color-ink)'
           )}
         >
-          streak<span className="text-(--color-primary)">me</span>
+          connect<span className="text-(--color-primary)">wiz</span>
         </span>
       )}
     </span>

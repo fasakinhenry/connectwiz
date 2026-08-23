@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { Logo } from '@/components/ui/logo';
 import { useAuth } from '@/hooks/use-auth';
+import { store } from '@/services/mock';
 
 /**
  * Lands here after Google/LinkedIn redirect back from the backend with
@@ -21,7 +22,7 @@ export default function OAuthCallbackPage() {
       return;
     }
     hydrateFromToken(token)
-      .then(() => navigate('/dashboard', { replace: true }))
+      .then(() => navigate(store.getPostAuthPath(), { replace: true }))
       .catch(() => setError('could not complete sign-in'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

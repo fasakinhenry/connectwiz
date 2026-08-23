@@ -6,6 +6,7 @@ import { SocialButton } from '@/components/ui/social-button';
 import { AuthShell } from './components/auth-shell';
 import { useAuth, ApiRequestError } from '@/hooks/use-auth';
 import { API_URL } from '@/lib/api-client';
+import { store } from '@/services/mock';
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -16,7 +17,7 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const redirectTo = (location.state as { from?: string } | null)?.from ?? '/dashboard';
+  const redirectTo = (location.state as { from?: string } | null)?.from ?? store.getPostAuthPath();
 
   async function onSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -90,7 +91,7 @@ export default function LoginPage() {
       </div>
 
       <p className="mt-8 text-center text-xs leading-relaxed text-ink-soft">
-        by signing in to streakme, you agree to our{' '}
+        by signing in to connectwiz, you agree to our{' '}
         <a href="#" className="font-bold text-ink-soft hover:text-link">
           terms
         </a>{' '}
