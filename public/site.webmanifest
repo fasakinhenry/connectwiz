@@ -1,0 +1,17 @@
+{
+  "name": "streakme",
+  "short_name": "streakme",
+  "description": "the social streak platform where people build consistency together.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#287bff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

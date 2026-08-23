@@ -1,0 +1,23 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b1a3d"/>
+  <rect width="1200" height="630" fill="url(#g)" opacity="0.5"/>
+  <defs>
+    <radialGradient id="g" cx="80%" cy="10%" r="70%">
+      <stop offset="0%" stop-color="#287bff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0b1a3d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <g transform="translate(120,220)">
+    <rect x="0" y="66" width="26" height="44" rx="9" fill="#ff8a3d" />
+    <rect x="34" y="36" width="26" height="74" rx="9" fill="#ff8a3d" />
+    <rect x="68" y="6" width="26" height="104" rx="9" fill="#ef6a1a" />
+    <path
+      d="M132 -18c6 12-1.5 20-6.5 26-5.5 6.5-9 13-4.5 22.5 3.5 6.5 10.5 10 17.5 9 10.5-1.5 18-12 17-24-1.5-16-13.5-28-23.5-33.5Z"
+      fill="#4c93ff"
+    />
+  </g>
+
+  <text x="120" y="400" font-family="Verdana, sans-serif" font-size="72" font-weight="700" fill="#ffffff">streakme</text>
+  <text x="120" y="450" font-family="Verdana, sans-serif" font-size="30" fill="#a9c5ff">build consistency together</text>
+</svg>

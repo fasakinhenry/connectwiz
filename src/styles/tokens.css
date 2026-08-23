@@ -1,0 +1,130 @@
+/*
+  ConnectWiz Design System
+  -----------------------
+  Accent      -> electric blue (#287bff) in both light and dark mode
+  Font        -> Quicksand (single family, hierarchy via weight/size)
+  Shape       -> flat, pill/rounded-lg forms, pseudo-3D pressable buttons
+*/
+
+:root {
+  color-scheme: light;
+
+  /* ---- brand ---- */
+  --color-primary: #287bff;
+  --color-primary-bright: #4c93ff;
+  --color-primary-deep: #1c5fd6;
+  --color-on-primary: #ffffff;
+
+  /* ---- ink / text ---- */
+  --color-ink: #10182b;
+  --color-ink-soft: #626b83;
+  --color-on-ink: #ffffff;
+
+  /* ---- surfaces ---- */
+  --color-canvas: #ffffff;
+  --color-cloud: #eef4ff;
+  --color-paper: #f6f9ff;
+  --color-hairline: #d7e4ff;
+  --color-hairline-strong: #a9c5ff;
+
+  /* ---- feedback ---- */
+  --color-success: #22c55e;
+  --color-warning: #ffb100;
+  --color-error: #ff5c72;
+  --color-link: var(--color-primary);
+
+  /* ---- streak flame accent (always warm, both themes) ---- */
+  --color-flame: #ff8a3d;
+  --color-flame-deep: #ef6a1a;
+
+  /* ---- inverse surface: ALWAYS dark, regardless of theme (footer, promo CTA) ---- */
+  --color-surface-inverse: #0b1220;
+  --color-surface-inverse-raised: #131c33;
+  --color-on-surface-inverse: #ffffff;
+  --color-on-surface-inverse-soft: rgba(255, 255, 255, 0.6);
+  --color-on-surface-inverse-faint: rgba(255, 255, 255, 0.15);
+
+  --shadow-none: none;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-primary: #287bff;
+  --color-primary-bright: #5c9fff;
+  --color-primary-deep: #1c5fd6;
+  --color-on-primary: #ffffff;
+
+  --color-ink: #eef2fb;
+  --color-ink-soft: #97a1c2;
+  --color-on-ink: #06150d;
+
+  --color-canvas: #0b0f1a;
+  --color-cloud: #121828;
+  --color-paper: #0f1422;
+  --color-hairline: #232b42;
+  --color-hairline-strong: #364366;
+
+  --color-success: #2bd47d;
+  --color-warning: #ffc94d;
+  --color-error: #ff7a8a;
+  --color-link: var(--color-primary-bright);
+
+  --color-flame: #ff9a52;
+  --color-flame-deep: #ff7a2e;
+
+  --color-surface-inverse: #05070d;
+  --color-surface-inverse-raised: #0e1526;
+  --color-on-surface-inverse: #ffffff;
+  --color-on-surface-inverse-soft: rgba(255, 255, 255, 0.6);
+  --color-on-surface-inverse-faint: rgba(255, 255, 255, 0.15);
+}
+
+@theme {
+  /* colors */
+  --color-primary: var(--color-primary);
+  --color-primary-bright: var(--color-primary-bright);
+  --color-primary-deep: var(--color-primary-deep);
+  --color-on-primary: var(--color-on-primary);
+
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-on-ink: var(--color-on-ink);
+
+  --color-canvas: var(--color-canvas);
+  --color-cloud: var(--color-cloud);
+  --color-paper: var(--color-paper);
+  --color-hairline: var(--color-hairline);
+  --color-hairline-strong: var(--color-hairline-strong);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-link: var(--color-link);
+
+  --color-flame: var(--color-flame);
+  --color-flame-deep: var(--color-flame-deep);
+
+  --color-surface-inverse: var(--color-surface-inverse);
+  --color-surface-inverse-raised: var(--color-surface-inverse-raised);
+  --color-on-surface-inverse: var(--color-on-surface-inverse);
+  --color-on-surface-inverse-soft: var(--color-on-surface-inverse-soft);
+  --color-on-surface-inverse-faint: var(--color-on-surface-inverse-faint);
+
+  /* typography */
+  --font-display: 'Quicksand', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Quicksand', ui-sans-serif, system-ui, sans-serif;
+
+  /* radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* spacing (extends default scale) */
+  --spacing-section-sm: 3rem;
+  --spacing-section-md: 2.75rem;
+
+  /* container */
+  --breakpoint-3xl: 1440px;
+}
