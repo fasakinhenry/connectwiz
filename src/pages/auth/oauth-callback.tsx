@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { Logo } from '@/components/ui/logo';
-import { useAuth } from '@/hooks/use-auth';
+import { useAuth, ApiRequestError } from '@/hooks/use-auth';
 import { store } from '@/services/mock';
+import { API_URL } from '@/lib/api-client';
 
 /**
  * Lands here after Google/LinkedIn redirect back from the backend with
@@ -23,7 +24,13 @@ export default function OAuthCallbackPage() {
     }
     hydrateFromToken(token)
       .then(() => navigate(store.getPostAuthPath(), { replace: true }))
-      .catch(() => setError('could not complete sign-in'));
+      .catch((err: unknown) => {
+        if (err instanceof ApiRequestError) {
+          setError(`sign-in failed (${err.status}): ${err.message}`);
+        } else {
+          setError(`could not reach the api at ${API_URL} — check VITE_API_URL and CORS`);
+        }
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
