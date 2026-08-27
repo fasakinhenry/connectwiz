@@ -7,10 +7,10 @@ import { buttonVariants } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 const LINKS = [
-  { label: 'how it works', href: '#how-it-works' },
-  { label: 'features', href: '#features' },
-  { label: 'community', href: '#community' },
-  { label: 'stories', href: '#stories' },
+  { label: 'How it thinks', href: '#how-it-thinks' },
+  { label: 'Try a search', href: '#live-search' },
+  { label: 'What you get', href: '#features' },
+  { label: 'Questions', href: '#faq' },
 ];
 
 export function Navbar() {
@@ -28,12 +28,12 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-(--color-hairline) bg-(--color-canvas)/90 backdrop-blur-md'
-          : 'border-b border-transparent bg-(--color-canvas)/60 backdrop-blur-sm'
+          ? 'border-b border-(--color-hairline) bg-(--color-canvas)/95 backdrop-blur-md'
+          : 'border-b border-transparent bg-(--color-canvas)/70 backdrop-blur-sm'
       }`}
     >
       <nav className="container-page flex h-18 items-center justify-between py-3.5" aria-label="primary">
-        <Link to="/" aria-label="streakme home">
+        <Link to="/" aria-label="ConnectWiz home">
           <Logo />
         </Link>
 
@@ -42,7 +42,7 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-bold text-(--color-ink-soft) transition-colors duration-200 hover:text-(--color-link)"
+                className="text-sm font-semibold text-(--color-ink-soft) transition-colors duration-200 hover:text-(--color-ink)"
               >
                 {link.label}
               </a>
@@ -53,10 +53,10 @@ export function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
           <Link to="/login" className={buttonVariants({ variant: 'secondary', size: 'sm' })}>
-            log in
+            Log in
           </Link>
           <Link to="/signup" className={buttonVariants({ variant: 'primary', size: 'sm' })}>
-            get started
+            Get started
           </Link>
         </div>
 
@@ -64,7 +64,7 @@ export function Navbar() {
           <ThemeToggle />
           <button
             type="button"
-            aria-label={open ? 'close menu' : 'open menu'}
+            aria-label={open ? 'Close menu' : 'Open menu'}
             onClick={() => setOpen((v) => !v)}
             className="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-(--color-hairline) text-(--color-ink)"
           >
@@ -88,7 +88,7 @@ export function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-3 py-3 text-base font-bold text-(--color-ink) hover:bg-(--color-cloud)"
+                    className="block rounded-lg px-3 py-3 text-base font-semibold text-(--color-ink) hover:bg-(--color-cloud)"
                   >
                     {link.label}
                   </a>
@@ -100,14 +100,14 @@ export function Navbar() {
                   onClick={() => setOpen(false)}
                   className={buttonVariants({ variant: 'secondary', size: 'sm' })}
                 >
-                  log in
+                  Log in
                 </Link>
                 <Link
                   to="/signup"
                   onClick={() => setOpen(false)}
                   className={buttonVariants({ variant: 'primary', className: 'w-full' }) + " py-2.5!"}
                 >
-                  get started
+                  Get started
                 </Link>
               </li>
             </ul>

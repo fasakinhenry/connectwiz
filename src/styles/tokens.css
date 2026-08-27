@@ -2,8 +2,11 @@
   ConnectWiz Design System
   -----------------------
   Accent      -> electric blue (#287bff) in both light and dark mode
-  Font        -> Quicksand (single family, hierarchy via weight/size)
-  Shape       -> flat, pill/rounded-lg forms, pseudo-3D pressable buttons
+  Display     -> Fraunces (soft serif, editorial confidence for headlines)
+  Body/UI     -> Manrope (clean geometric grotesk for everything else)
+  Shape       -> flat, pill/rounded-lg forms, pseudo-3D pressable buttons.
+                 No gradients, ever: contrast comes from type, hairlines and
+                 flat colour blocks instead.
 */
 
 :root {
@@ -112,8 +115,8 @@
   --color-on-surface-inverse-faint: var(--color-on-surface-inverse-faint);
 
   /* typography */
-  --font-display: 'Quicksand', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Quicksand', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
 
   /* radius */
   --radius-sm: 8px;
