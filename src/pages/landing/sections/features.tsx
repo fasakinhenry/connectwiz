@@ -1,37 +1,37 @@
 import { motion } from 'framer-motion';
-import { MessageSquare, Search, Users, Sparkles, CalendarDays, Trophy } from 'lucide-react';
+import { MessagesSquare, Users, Calendar, Flame, MapPin, ShieldCheck } from 'lucide-react';
 import { Eyebrow } from '@/components/ui/eyebrow';
 
 const FEATURES = [
   {
-    icon: MessageSquare,
-    title: 'conversational onboarding',
-    body: 'no boring forms. tell an AI chat about your skills, interests, and goals, and it builds your networking profile for you.',
+    icon: MessagesSquare,
+    title: 'A conversation, not a form',
+    body: 'Onboarding is a chat. Answer naturally, get a follow-up on anything vague, review the profile before it saves.',
   },
   {
-    icon: Search,
-    title: 'natural-language search',
-    body: 'search like you talk. "product designers in lagos into AI" — connectwiz interprets the intent and finds the people who fit.',
-  },
-  {
-    icon: Sparkles,
-    title: '"why you should connect"',
-    body: 'every match comes with plain-language reasons — shared skills, interests, goals, or location — so you know why before you say hi.',
+    icon: MapPin,
+    title: 'Location that actually matters',
+    body: 'Share your position once and "near me" searches use real distance, not a guess based on your bio.',
   },
   {
     icon: Users,
-    title: 'connections that go somewhere',
-    body: 'connect, get a conversation starter, and message — all in one flow. no more staring at a blank chat box.',
+    title: 'Communities with a pulse',
+    body: 'Join groups built around what you do, not just your job title, and see who is active this week.',
   },
   {
-    icon: CalendarDays,
-    title: 'events & communities',
-    body: 'see who you might want to meet at an event before you show up, and join communities built around what you actually care about.',
+    icon: Calendar,
+    title: 'Events worth showing up to',
+    body: 'Every event surfaces the people you might actually want to meet there, before you arrive.',
   },
   {
-    icon: Trophy,
-    title: 'a streak that means something',
-    body: 'build a networking habit with streaks, daily missions, and XP — for meeting people, not just opening the app.',
+    icon: Flame,
+    title: 'A streak that means something',
+    body: 'It tracks real networking activity: a message sent, a connection made, not just opening the app.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Private by default',
+    body: 'Your profile is yours to edit and remove. No selling data, no dark patterns to keep you scrolling.',
   },
 ];
 
@@ -39,34 +39,40 @@ export function Features() {
   return (
     <section id="features" className="py-section-sm md:py-section-md">
       <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow>the platform</Eyebrow>
-          <h2 className="mt-5 text-balance text-4xl font-bold tracking-tight text-ink md:text-5xl">
-            everything networking needs to stop feeling hectic
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-            not a directory. not a swipe deck. an AI copilot for the whole loop — discover,
-            understand, approach, connect, and stay in touch.
-          </p>
-        </div>
+        <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5 }}
+            className="lg:sticky lg:top-28 lg:self-start"
+          >
+            <Eyebrow>What you get</Eyebrow>
+            <h2 className="font-display mt-5 text-balance text-4xl font-medium tracking-tight text-ink md:text-5xl">
+              Everything after the first match
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+              Finding someone is the easy part to fake. Here is what keeps the relationship
+              actually going.
+            </p>
+          </motion.div>
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((feature, i) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.45, delay: (i % 3) * 0.08 }}
-              className="rounded-lg border-2 border-hairline bg-canvas p-7 transition-colors duration-200 hover:border-link"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-md bg-cloud text-link">
-                <feature.icon size={22} />
-              </div>
-              <h3 className="mt-5 text-lg font-bold text-ink">{feature.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{feature.body}</p>
-            </motion.div>
-          ))}
+          <div className="grid gap-5 sm:grid-cols-2">
+            {FEATURES.map((feature, i) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.4, delay: (i % 2) * 0.08 }}
+                className="rounded-lg border-2 border-hairline p-6 transition-colors duration-200 hover:border-link"
+              >
+                <feature.icon size={20} className="text-link" strokeWidth={2} />
+                <h3 className="mt-4 text-base font-semibold text-ink">{feature.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{feature.body}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,10 @@
 export { Hero } from './hero';
-export { LogoCloud } from './logo-cloud';
+export { AudienceStrip } from './audience-strip';
+export { Problem } from './problem';
+export { LoopStepper } from './loop-stepper';
+export { LiveSearchDemo } from './live-search-demo';
 export { Features } from './features';
-export { HowItWorks } from './how-it-works';
-export { Community } from './community';
+export { Proof } from './proof';
 export { Testimonials } from './testimonials';
+export { FAQ } from './faq';
 export { CTA } from './cta';

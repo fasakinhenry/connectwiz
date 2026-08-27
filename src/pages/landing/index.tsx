@@ -1,7 +1,18 @@
 import { Helmet } from 'react-helmet-async';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
-import { Hero, LogoCloud, Features, HowItWorks, Community, Testimonials, CTA } from './sections';
+import {
+  Hero,
+  AudienceStrip,
+  Problem,
+  LoopStepper,
+  LiveSearchDemo,
+  Features,
+  Proof,
+  Testimonials,
+  FAQ,
+  CTA,
+} from './sections';
 import { SITE, organizationJsonLd, siteNavigationJsonLd, softwareAppJsonLd } from '@/lib/seo';
 
 export default function LandingPage() {
@@ -30,13 +41,16 @@ export default function LandingPage() {
       </Helmet>
 
       <Navbar />
-      <main className='mb-24'>
+      <main className="mb-24">
         <Hero />
-        <LogoCloud />
+        <AudienceStrip />
+        <Problem />
+        <LoopStepper />
+        <LiveSearchDemo />
         <Features />
-        <HowItWorks />
-        <Community />
+        <Proof />
         <Testimonials />
+        <FAQ />
         <CTA />
       </main>
       <Footer />
